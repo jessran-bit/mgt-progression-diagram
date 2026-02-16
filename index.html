@@ -3,72 +3,45 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BSMGT Programme Progression</title>
+<title>BSMGT Progression (Panel-Friendly)</title>
 
 <style>
 :root{
-  --foundation:#1e73be;
-  --nlcc:#6b21a8;
-  --ched:#dc2626;
-  --buscore:#16a34a;
-  --major:#f59e0b;
+  --foundation:#1e73be;   /* FOUNDATION */
+  --nlcc:#6b21a8;         /* NLCC */
+  --ched:#dc2626;         /* CHED CORE */
+  --buscore:#16a34a;      /* BUSINESS CORE */
+  --major:#f59e0b;        /* MGT MAJOR */
   --border:#e5e7eb;
+  --muted:#4b5563;
 }
-
-body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  margin:24px;
-}
-
-h1{font-size:20px;margin-bottom:6px}
-p{font-size:13px;color:#555;margin-bottom:14px}
-
-.card{
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:20px;
-  box-shadow:0 1px 8px rgba(0,0,0,.05);
-}
-
-button{
-  padding:8px 14px;
-  border-radius:6px;
-  border:1px solid #ccc;
-  cursor:pointer;
-  margin-right:8px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:12px;
-}
-th,td{
-  border:1px solid var(--border);
-  padding:8px;
-  vertical-align:top;
-}
-th{background:#f9fafb;text-align:left}
-
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:24px;background:#fff}
+.wrap{max-width:1250px;margin:0 auto}
+h1{font-size:20px;margin:0 0 6px}
+p{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.35}
+.card{border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:0 1px 10px rgba(0,0,0,.04);margin-bottom:14px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+button{padding:8px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer}
 .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tag{
-  display:flex;align-items:center;gap:6px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:5px 10px;
-  font-size:11px;
-}
+.tag{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:5px 10px;font-size:11px}
 .sw{width:12px;height:12px;border-radius:3px}
+.note{font-size:12px;color:var(--muted);margin-top:8px}
+.scroll{overflow:auto}
+.mermaid{min-width:1100px}
 </style>
 
 <!-- Mermaid -->
 <script type="module">
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-mermaid.initialize({ startOnLoad:true, theme:"base" });
+mermaid.initialize({
+  startOnLoad:true,
+  theme:"base",
+  flowchart:{curve:"linear"},
+  themeVariables:{fontFamily:"system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif", fontSize:"12px"}
+});
 </script>
 
-<!-- Export Libraries -->
+<!-- Export libs -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
@@ -76,150 +49,131 @@ mermaid.initialize({ startOnLoad:true, theme:"base" });
 async function downloadPDF(){
   const { jsPDF } = window.jspdf;
   const element = document.getElementById("exportArea");
-
-  const canvas = await html2canvas(element,{scale:2});
+  const canvas = await html2canvas(element,{scale:2, backgroundColor:"#ffffff"});
   const imgData = canvas.toDataURL("image/jpeg",1.0);
-
-  const pdf = new jsPDF({
-    orientation:"landscape",
-    unit:"px",
-    format:[canvas.width,canvas.height]
-  });
-
+  const pdf = new jsPDF({orientation:"landscape", unit:"px", format:[canvas.width, canvas.height]});
   pdf.addImage(imgData,"JPEG",0,0,canvas.width,canvas.height);
-  pdf.save("BSMGT_Programme_Progression.pdf");
+  pdf.save("BSMGT_Panel_Progression.pdf");
 }
-
 async function downloadJPEG(){
   const element = document.getElementById("exportArea");
-  const canvas = await html2canvas(element,{scale:2});
-
+  const canvas = await html2canvas(element,{scale:2, backgroundColor:"#ffffff"});
   const link = document.createElement("a");
-  link.download="BSMGT_Programme_Progression.jpeg";
-  link.href=canvas.toDataURL("image/jpeg",1.0);
+  link.download = "BSMGT_Panel_Progression.jpeg";
+  link.href = canvas.toDataURL("image/jpeg",1.0);
   link.click();
 }
 </script>
 </head>
 
 <body>
+<div class="wrap">
+  <h1>BS Business Management (MGT) — Programme Progression (Panel-Friendly)</h1>
+  <p>Clean overview for panels: shows the full course ecosystem per year, while highlighting only key progression chains (Accounting→Finance, Analytics→Big Data→SIS, Research→Thesis, Law 1→Law 2, OTM→Project Management).</p>
 
-<h1>BS Business Management (MGT) — Programme Progression</h1>
-<p>Checklist-aligned visualization with color coding and developmental progression.</p>
+  <div class="card">
+    <div class="btns">
+      <button onclick="downloadPDF()">Save as PDF</button>
+      <button onclick="downloadJPEG()">Save as JPEG</button>
+    </div>
 
-<button onclick="downloadPDF()">Save as PDF</button>
-<button onclick="downloadJPEG()">Save as JPEG</button>
+    <div class="legend">
+      <div class="tag"><span class="sw" style="background:var(--foundation)"></span>FOUNDATION</div>
+      <div class="tag"><span class="sw" style="background:var(--buscore)"></span>BUSINESS CORE</div>
+      <div class="tag"><span class="sw" style="background:var(--major)"></span>MGT MAJOR</div>
+      <div class="tag"><span class="sw" style="background:var(--nlcc)"></span>NLCC</div>
+      <div class="tag"><span class="sw" style="background:var(--ched)"></span>CHED CORE</div>
+    </div>
 
-<div id="exportArea">
+    <div class="note">
+      Note: Arrows show selected prerequisite/progression chains for clarity. The complete term-by-term course checklist is provided in the Appendix version.
+    </div>
+  </div>
 
-<!-- YEAR SUMMARY TABLE -->
-<div class="card">
-<b>Year of Study Progression Summary</b>
-<table>
-<tr>
-<th>Year</th>
-<th>Dominant Learning Focus</th>
-<th>Expected Learning Outcomes</th>
-<th>Primary Integration Mechanism</th>
-</tr>
-
-<tr>
-<td><b>Year 1</b></td>
-<td>Foundational business competencies</td>
-<td>Understanding and initial application of core business concepts and basic ICT use.</td>
-<td>Foundational and general education courses</td>
-</tr>
-
-<tr>
-<td><b>Year 2</b></td>
-<td>Application and analytical development</td>
-<td>Application of decision tools, structured problem analysis, ethical/legal awareness.</td>
-<td>Core business and case-based learning</td>
-</tr>
-
-<tr>
-<td><b>Year 3</b></td>
-<td>Functional and cross-functional integration</td>
-<td>Integration of knowledge across functions and increasing independence.</td>
-<td>Practicum-related and integrative subjects</td>
-</tr>
-
-<tr>
-<td><b>Year 4</b></td>
-<td>Strategic integration and professional practice</td>
-<td>Strategic planning, leadership demonstration, thesis and internship completion.</td>
-<td>Internship and undergraduate thesis</td>
-</tr>
-</table>
-
-<div class="legend">
-<div class="tag"><span class="sw" style="background:#1e73be"></span>Foundation</div>
-<div class="tag"><span class="sw" style="background:#6b21a8"></span>NLCC</div>
-<div class="tag"><span class="sw" style="background:#dc2626"></span>CHED Core</div>
-<div class="tag"><span class="sw" style="background:#16a34a"></span>Business Core</div>
-<div class="tag"><span class="sw" style="background:#f59e0b"></span>MGT Major</div>
-</div>
-</div>
-
-<!-- MERMAID DIAGRAM -->
-<div class="card">
+  <div id="exportArea" class="card scroll">
 <pre class="mermaid">
-flowchart TB
+flowchart LR
 
-%% COLOR CLASSES
-classDef foundation fill:#1e73be,color:#fff;
-classDef buscore fill:#16a34a,color:#fff;
-classDef major fill:#f59e0b,color:#111;
+%% ====== COLOR CLASSES ======
+classDef foundation fill:#1e73be,color:#fff,stroke:#0b4a7a,stroke-width:1px;
+classDef nlcc fill:#6b21a8,color:#fff,stroke:#3b0764,stroke-width:1px;
+classDef ched fill:#dc2626,color:#fff,stroke:#7f1d1d,stroke-width:1px;
+classDef buscore fill:#16a34a,color:#fff,stroke:#166534,stroke-width:1px;
+classDef major fill:#f59e0b,color:#111,stroke:#b45309,stroke-width:1px;
 
-%% ===== TOP SECTION =====
-subgraph TOP[" "]
-direction LR
-
-subgraph Y3["Year 3"]
+%% ====== YEAR BOXES (ecosystem per year) ======
+subgraph Y1["Year 1 — Foundational Business Competencies"]
 direction TB
-BR["Business Research"]:::major
-FS["Feasibility Study"]:::major
-SIS["Strategic Info Systems"]:::major
+Y1F1["Applied Economics"]:::foundation
+Y1F2["Business Mathematics & Finance"]:::foundation
+Y1F3["Organization & Management"]:::foundation
+Y1F4["Principles of Marketing"]:::foundation
+Y1F5["Fundamentals of Accountancy, Business & Management"]:::foundation
+Y1B1["Accounting 1"]:::buscore
+Y1B2["Accounting 2"]:::buscore
+Y1B3["Marketing Fundamentals"]:::buscore
+Y1B4["HRM w/ Organizational Behavior"]:::buscore
+Y1B5["Basic Microeconomics"]:::foundation
+Y1B6["Obligations & Contracts (Law 1)"]:::buscore
+Y1M1["Introduction to Analytics (Desc & Pred)"]:::major
+Y1L["LCC 1–5, Lasallian Studies 1, Recollection 1, SAS 1000"]:::nlcc
+Y1C["NSTP Orientation + NSTP 1–2"]:::ched
 end
 
-subgraph Y4["Year 4"]
+subgraph Y2["Year 2 — Application & Analytical Development"]
 direction TB
-TH1["Thesis 1"]:::major
-TH2["Thesis 2"]:::major
-INT["Internship"]:::major
+Y2B1["Accounting 3"]:::buscore
+Y2B2["Finance Management"]:::buscore
+Y2B3["International Business Agreements"]:::buscore
+Y2B4["CSR & Governance"]:::buscore
+Y2B5["Partnership & Corporations (Law 2)"]:::buscore
+Y2M1["Prescriptive Analytics (Optimization)"]:::major
+Y2M2["Operations & Technology Management"]:::major
+Y2M3["System Dynamics"]:::major
+Y2M4["System Analysis & Design"]:::major
+Y2M5["Big Data Techniques & Technology"]:::major
+Y2M6["Simulation Model"]:::major
+Y2M7["Innovation & Technology Management"]:::major
+Y2M8["Total Quality Management"]:::major
+Y2M9["Management Elective 1"]:::major
+Y2L["LCC 6–8, Lasallian Studies 2, Recollection 2, SAS 2000"]:::nlcc
+Y2C["PE 1–3"]:::ched
 end
 
-end
-
-%% ===== BOTTOM SECTION =====
-subgraph BOTTOM[" "]
-direction LR
-
-subgraph Y1["Year 1"]
+subgraph Y3["Year 3 — Functional & Cross-Functional Integration"]
 direction TB
-AE["Applied Economics"]:::foundation
-ACC1["Accounting 1"]:::buscore
-ANL["Intro to Analytics"]:::major
+Y3M1["Business Research"]:::major
+Y3M2["Feasibility Study"]:::major
+Y3M3["Strategic Information Systems"]:::major
+Y3M4["Systems Theory"]:::major
+Y3M5["Thesis 1"]:::major
+Y3M6["OJT Internship for MGT"]:::major
+Y3M7["Management Elective 2–3"]:::major
+Y3M8["Strategic Management"]:::major
+Y3M9["Supply Chain Management"]:::major
+Y3M10["Project Management"]:::major
+Y3M11["Thesis 2"]:::major
+Y3L["LCC 9–14, Lasallian Studies 3, SAS 3000"]:::nlcc
+Y3C["PE 4"]:::ched
 end
 
-subgraph Y2["Year 2"]
+subgraph Y4["Year 4 — Strategic Integration & Professional Practice"]
 direction TB
-FIN["Finance Management"]:::buscore
-OPM["Operations & Tech Mgt"]:::major
-BIG["Big Data"]:::major
+Y4B1["Taxation"]:::buscore
+Y4M1["Project-based Practicum for MGT"]:::major
+Y4M2["Management Elective 4"]:::major
+Y4L["LCC 15, Recollection 3"]:::nlcc
 end
 
-end
-
-%% ARROWS
-BR --> TH1 --> TH2
-ACC1 --> FIN
-ANL --> OPM --> BIG
+%% ====== KEY CHAINS (only the important ones) ======
+Y1B1 --> Y2B2
+Y1M1 --> Y2M2 --> Y2M5 --> Y3M3
+Y3M1 --> Y3M5 --> Y3M11
+Y1B6 --> Y2B5
+Y2M2 --> Y3M10
 
 </pre>
+  </div>
 </div>
-
-</div>
-
 </body>
 </html>
