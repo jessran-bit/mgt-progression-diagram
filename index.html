@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BSMGT Programme Progression (AUN-QA)</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    h1 { font-size: 22px; margin: 0 0 8px; }
+    p { margin: 0 0 18px; color: #444; }
+    .card { border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px; box-shadow: 0 1px 8px rgba(0,0,0,.04); }
+    .hint { margin-top: 12px; font-size: 13px; color: #666; }
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 6px; }
+  </style>
+
+  <!-- Mermaid -->
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      flowchart: { curve: "basis" }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>BS Business Management (MGT) — Programme Learning Progression</h1>
+    <p>AUN-QA-ready progression view (Foundations → Integration → Applied/Strategic → Mastery), with research and analytics pathways.</p>
+
+    <div class="card">
+      <pre class="mermaid">
+flowchart LR
+
+%% =========================
+%% YEAR-BY-YEAR PROGRESSION
+%% =========================
+Y1["Year 1: Foundational Competencies
+- Economics, Accounting, Marketing, Org & Mgt
+- Intro to Analytics
+Bloom: Understand → Apply"]
+
+Y2["Year 2: Functional Integration
+- Finance, Operations & Tech
+- Prescriptive Analytics, Big Data, Systems (SAD)
+- CSR & Governance, Quality
+Bloom: Apply → Analyze"]
+
+Y3["Year 3: Applied & Strategic Development
+- Business Research
+- Feasibility Study
+- Strategic Information Systems
+- Systems Theory + Electives
+Bloom: Analyze → Evaluate"]
+
+Y4["Year 4: Synthesis & Mastery
+- Thesis 1 → Thesis 2
+- Strategic Management
+- Supply Chain, Project Management
+- Internship/Practicum
+Bloom: Evaluate → Create"]
+
+Y1 --> Y2 --> Y3 --> Y4
+
+%% =========================
+%% RESEARCH PATHWAY
+%% =========================
+subgraph R["Research Progression Pathway"]
+direction TB
+RB["Business Research"] --> T1["Thesis 1 (Proposal)"] --> T2["Thesis 2 (Execution & Defense)"]
+end
+
+%% =========================
+%% ANALYTICS & SYSTEMS PATHWAY
+%% =========================
+subgraph A["Analytics & Systems Progression"]
+direction TB
+AN1["Intro to Analytics"] --> AN2["Prescriptive Analytics (Optimization)"] --> AN3["Big Data Techniques & Tech"] --> AN4["Simulation Model"] --> AN5["Strategic Information Systems"]
+end
+
+%% LINK PATHWAYS TO YEAR NODES (light guidance)
+Y1 -.supports.-> AN1
+Y2 -.reinforces.-> AN2
+Y2 -.reinforces.-> AN3
+Y2 -.reinforces.-> AN4
+Y3 -.integrates.-> AN5
+
+Y3 -.introduces.-> RB
+Y4 -.culminates.-> T2
+      </pre>
+    </div>
+
+    <div class="hint">
+      Tip: Put this in a GitHub repo as <code>index.html</code>, then enable GitHub Pages (Settings → Pages → Deploy from branch).
+    </div>
+  </div>
+</body>
+</html>
