@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BSMGT Progression (Appendix – Complete)</title>
+
+<style>
+:root{
+  --foundation:#1e73be;
+  --nlcc:#6b21a8;
+  --ched:#dc2626;
+  --buscore:#16a34a;
+  --major:#f59e0b;
+  --border:#e5e7eb;
+  --muted:#4b5563;
+}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:24px;background:#fff}
+.wrap{max-width:1400px;margin:0 auto}
+h1{font-size:20px;margin:0 0 6px}
+p{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.35}
+.card{border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:0 1px 10px rgba(0,0,0,.04);margin-bottom:14px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+button{padding:8px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:5px 10px;font-size:11px}
+.sw{width:12px;height:12px;border-radius:3px}
+.scroll{overflow:auto}
+.mermaid{min-width:1750px}
+.note{font-size:12px;color:var(--muted);margin-top:8px}
+</style>
+
+<!-- Mermaid -->
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+mermaid.initialize({
+  startOnLoad:true,
+  theme:"base",
+  flowchart:{curve:"linear"},
+  themeVariables:{fontFamily:"system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif", fontSize:"11px"}
+});
+</script>
+
+<!-- Export libs -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<script>
+async function downloadPDF(){
+  const { jsPDF } = window.jspdf;
+  const element = document.getElementById("exportArea");
+  const canvas = await html2canvas(element,{scale:2, backgroundColor:"#ffffff"});
+  const imgData = canvas.toDataURL("image/jpeg",1.0);
+  const pdf = new jsPDF({orientation:"landscape", unit:"px", format:[canvas.width, canvas.height]});
+  pdf.addImage(imgData,"JPEG",0,0,canvas.width,canvas.height);
+  pdf.save("BSMGT_Appendix_Complete.pdf");
+}
+async function downloadJPEG(){
+  const element = document.getElementById("exportArea");
+  const canvas = await html2canvas(element,{scale:2, backgroundColor:"#ffffff"});
+  const link = document.createElement("a");
+  link.download = "BSMGT_Appendix_Complete.jpeg";
+  link.href = canvas.toDataURL("image/jpeg",1.0);
+  link.click();
+}
+</script>
+</head>
+
+<body>
+<div class="wrap">
+  <h1>BS Business Management (MGT) — Appendix Progression Map (Complete)</h1>
+  <p>Complete term-by-term listing aligned with the official checklist. Only major prerequisite chains are arrowed to keep the diagram readable.</p>
+
+  <div class="card">
+    <div class="btns">
+      <button onclick="downloadPDF()">Save as PDF</button>
+      <button onclick="downloadJPEG()">Save as JPEG</button>
+    </div>
+
+    <div class="legend">
+      <div class="tag"><span class="sw" style="background:var(--foundation)"></span>FOUNDATION</div>
+      <div class="tag"><span class="sw" style="background:var(--buscore)"></span>BUSINESS CORE</div>
+      <div class="tag"><span class="sw" style="background:var(--major)"></span>MGT MAJOR</div>
+      <div class="tag"><span class="sw" style="background:var(--nlcc)"></span>NLCC</div>
+      <div class="tag"><span class="sw" style="background:var(--ched)"></span>CHED CORE</div>
+    </div>
+
+    <div class="note">
+      Arrows shown: Accounting 1→2→3; Intro Analytics→Optimization→Big Data→Simulation→SIS; Business Research→Thesis 1→Thesis 2; Law 1→Law 2; OTM→Project Management; Thesis 1→Thesis 2.
+    </div>
+  </div>
+
+  <div id="exportArea" class="card scroll">
+<pre class="mermaid">
+flowchart TB
+
+%% ====== COLOR CLASSES ======
+classDef foundation fill:#1e73be,color:#fff,stroke:#0b4a7a,stroke-width:1px;
+classDef nlcc fill:#6b21a8,color:#fff,stroke:#3b0764,stroke-width:1px;
+classDef ched fill:#dc2626,color:#fff,stroke:#7f1d1d,stroke-width:1px;
+classDef buscore fill:#16a34a,color:#fff,stroke:#166534,stroke-width:1px;
+classDef major fill:#f59e0b,color:#111,stroke:#b45309,stroke-width:1px;
+
+%% ======================
+%% YEAR 1 (AY 2023–2024)
+%% ======================
+subgraph Y1["Year 1 (AY 2023–2024)"]
+direction LR
+
+subgraph Y1T1["Term 1"]
+direction TB
+FDNECON["FDNECON – Applied Economics"]:::foundation
+FDNBUSM["FDNBUSM – Business Mathematics & Finance"]:::foundation
+FDNMANP["FDNMANP – Organization and Management"]:::foundation
+FDNMARK["FDNMARK – Principles of Marketing"]:::foundation
+FDNACCT["FDNACCT – Fundamentals of Accountancy, Business & Management"]:::foundation
+LCLSONE["LCLSONE – Lasallian Studies 1"]:::nlcc
+LASARE1["LASARE1 – Lasallian Recollection 1"]:::nlcc
+NSTP101["NSTP101 – NSTP General Orientation"]:::ched
+end
+
+subgraph Y1T2["Term 2"]
+direction TB
+ACCCOB1["ACCCOB1 – Accounting 1"]:::buscore
+COBECON["COBECON – Basic Microeconomics"]:::foundation
+COBLAW1["COBLAW1 – Obligations and Contracts"]:::buscore
+LCC01["LCC..01 – Lasallian Core Curriculum 1"]:::nlcc
+LCC02["LCC..02 – Lasallian Core Curriculum 2"]:::nlcc
+LCC03["LCC..03 – Lasallian Core Curriculum 3"]:::nlcc
+SAS1000["SAS1000 – Student Affairs Services 1000"]:::nlcc
+NSTP01["NSTP-01 – NSTP 1"]:::ched
+end
+
+subgraph Y1T3["Term 3"]
+direction TB
+ACCCOB2["ACCCOB2 – Accounting 2"]:::buscore
+DSILYTC["DSILYTC – Introduction to Analytics (Descriptive & Predictive)"]:::major
+MADFUND["MADFUND – Marketing Fundamentals"]:::buscore
+COBSHUR["COBSHUR – HRM with Organizational Behavior"]:::buscore
+LCC04["LCC..04 – Lasallian Core Curriculum 4"]:::nlcc
+LCC05["LCC..05 – Lasallian Core Curriculum 5"]:::nlcc
+NSTP02["NSTP-02 – NSTP 2"]:::ched
+end
+
+end
+
+%% ======================
+%% YEAR 2 (AY 2024–2025)
+%% ======================
+subgraph Y2["Year 2 (AY 2024–2025)"]
+direction LR
+
+subgraph Y2T1["Term 1"]
+direction TB
+ACCCOB3["ACCCOB3 – Accounting 3"]:::buscore
+DSIMGTS["DSIMGTS – Prescriptive Analytics (Optimization)"]:::major
+COMSKIL["COMSKIL – Communication Skills for Leaders"]:::buscore
+SYSTMIC["SYSTMIC – System Dynamics"]:::major
+LCC06["LCC..06 – Lasallian Core Curriculum 6"]:::nlcc
+LCC07["LCC..07 – Lasallian Core Curriculum 7"]:::nlcc
+PE1CRDO["PE1CRDO – Cardio Fitness"]:::ched
+LCLSTWO["LCLSTWO – Lasallian Studies 2"]:::nlcc
+end
+
+subgraph Y2T2["Term 2"]
+direction TB
+FMDFINA["FMDFINA – Finance Management"]:::buscore
+DSIOPMA["DSIOPMA – Operations and Technology Management"]:::major
+COBIBDS["COBIBDS – International Business Agreements"]:::buscore
+SYSDESI["SYSDESI – System Analysis and Design"]:::major
+BIGDATA["BIGDATA – Big Data Techniques and Technology"]:::major
+COBCSRG["COBCSRG – CSR and Governance"]:::buscore
+PE2FTEX["PE2FTEX – Functional Exercises"]:::ched
+LASARE2["LASARE2 – Lasallian Recollection 2"]:::nlcc
+SAS2000["SAS2000 – Student Affairs Services 2000"]:::nlcc
+end
+
+subgraph Y2T3["Term 3"]
+direction TB
+COBLAW2["COBLAW2 – Partnership and Corporations"]:::buscore
+COBQUAL["COBQUAL – Total Quality Management"]:::major
+INNOVTE["INNOVTE – Innovation and Technology Management"]:::major
+SIMMODE["SIMMODE – Simulation Model"]:::major
+MGTELE1["MGTELE1 – Management Elective 1"]:::major
+LCC08["LCC..08 – Lasallian Core Curriculum 8"]:::nlcc
+PETHREE["PETHREE – Physical Fitness & Wellness (Individual Sports)"]:::ched
+end
+
+end
+
+%% ======================
+%% YEAR 3 (AY 2025–2026)
+%% ======================
+subgraph Y3["Year 3 (AY 2025–2026)"]
+direction LR
+
+subgraph Y3T1["Term 1"]
+direction TB
+COBFSDS["COBFSDS – Feasibility Study"]:::major
+SISBUSI["SISBUSI – Strategic Information System"]:::major
+RESBUSM["RESBUSM – Business Research"]:::major
+SYSTHEO["SYSTHEO – Systems Theory"]:::major
+LCC09["LCC..09 – Lasallian Core Curriculum 9"]:::nlcc
+LCC10["LCC..10 – Lasallian Core Curriculum 10"]:::nlcc
+end
+
+subgraph Y3T2["Term 2"]
+direction TB
+THSBUS1["THSBUS1 – Thesis 1"]:::major
+PRCMOJT["PRCMOJT – OJT Internship for MGT"]:::major
+MGTELE2["MGTELE2 – Management Elective 2"]:::major
+MGTELE3["MGTELE3 – Management Elective 3"]:::major
+LCC11["LCC..11 – Lasallian Core Curriculum 11"]:::nlcc
+LCC12["LCC..12 – Lasallian Core Curriculum 12"]:::nlcc
+PEDFOUR["PEDFOUR – Physical Fitness & Wellness (Team Sports)"]:::ched
+SAS3000["SAS3000 – Student Affairs Services 3000"]:::nlcc
+end
+
+subgraph Y3T3["Term 3"]
+direction TB
+COBSTRM["COBSTRM – Strategic Management"]:::major
+SUPCHAM["SUPCHAM – Supply Chain Management"]:::major
+PROJECM["PROJECM – Project Management"]:::major
+THSBUS2["THSBUS2 – Thesis 2"]:::major
+LCC13["LCC..13 – Lasallian Core Curriculum 13"]:::nlcc
+LCC14["LCC..14 – Lasallian Core Curriculum 14"]:::nlcc
+LCLSTRI["LCLSTRI – Lasallian Studies 3"]:::nlcc
+end
+
+end
+
+%% ======================
+%% YEAR 4 (AY 2026–2027) — Term 1 shown in checklist
+%% ======================
+subgraph Y4["Year 4 (AY 2026–2027)"]
+direction LR
+subgraph Y4T1["Term 1"]
+direction TB
+MGTELE4["MGTELE4 – Management Elective 4"]:::major
+PRCMPRJ["PRCMPRJ – Project-based Practicum for MGT"]:::major
+CLWTAXN["CLWTAXN – Taxation"]:::buscore
+LCC15["LCC..15 – Lasallian Core Curriculum 15"]:::nlcc
+LASARE3["LASARE3 – Lasallian Recollection 3"]:::nlcc
+end
+end
+
+%% ====== MAJOR CHAINS ONLY ======
+ACCCOB1 --> ACCCOB2 --> ACCCOB3
+DSILYTC --> DSIMGTS --> BIGDATA --> SIMMODE --> SISBUSI
+RESBUSM --> THSBUS1 --> THSBUS2
+COBLAW1 --> COBLAW2
+DSIOPMA --> PROJECM
+
+</pre>
+  </div>
+</div>
+</body>
+</html>
