@@ -3,98 +3,297 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BSMGT Programme Progression (AUN-QA)</title>
+  <title>BSMGT Progression (Checklist-Aligned)</title>
+
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
-    .wrap { max-width: 1100px; margin: 0 auto; }
-    h1 { font-size: 22px; margin: 0 0 8px; }
-    p { margin: 0 0 18px; color: #444; }
-    .card { border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px; box-shadow: 0 1px 8px rgba(0,0,0,.04); }
-    .hint { margin-top: 12px; font-size: 13px; color: #666; }
-    code { background: #f6f8fa; padding: 2px 6px; border-radius: 6px; }
+    :root{
+      --foundation:#1e73be;   /* FOUNDATION */
+      --nlcc:#6b21a8;         /* NLCC */
+      --ched:#dc2626;         /* CHED CORE */
+      --buscore:#16a34a;      /* BUSINESS CORE */
+      --major:#f59e0b;        /* MGT MAJOR */
+      --ink:#111827;
+      --muted:#4b5563;
+      --border:#e5e7eb;
+      --bg:#ffffff;
+    }
+
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 24px;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .wrap{max-width: 1250px; margin: 0 auto;}
+    h1{font-size: 20px; margin: 0 0 6px;}
+    p{margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.35;}
+    .row{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start;}
+    .card{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 1px 10px rgba(0,0,0,.04);
+      background:#fff;
+    }
+    .card.wide{flex: 1 1 780px;}
+    .card.narrow{flex: 1 1 420px;}
+
+    .legend{display:flex; gap:8px; flex-wrap:wrap; margin: 8px 0 0;}
+    .tag{
+      display:flex; align-items:center; gap:8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      background:#fff;
+    }
+    .sw{width: 12px; height: 12px; border-radius: 3px;}
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td{
+      border: 1px solid var(--border);
+      padding: 10px;
+      vertical-align: top;
+    }
+    th{background:#fafafa; text-align:left;}
+    .small{font-size: 11px; color: var(--muted); margin-top: 8px;}
+    .mermaid{min-width: 1100px;}
+    .scroll{overflow:auto;}
   </style>
 
-  <!-- Mermaid -->
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
     mermaid.initialize({
       startOnLoad: true,
-      theme: "default",
-      flowchart: { curve: "basis" }
+      theme: "base",
+      themeVariables: {
+        fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
+        fontSize: "12px"
+      },
+      flowchart: { curve: "linear" }
     });
   </script>
 </head>
 
 <body>
-  <div class="wrap">
-    <h1>BS Business Management (MGT) — Programme Learning Progression</h1>
-    <p>AUN-QA-ready progression view (Foundations → Integration → Applied/Strategic → Mastery), with research and analytics pathways.</p>
+<div class="wrap">
+  <h1>BS Business Management (MGT) — Programme Progression (Checklist-Aligned)</h1>
+  <p>Color coding follows the official course checklist categories. The diagram shows the term-by-term flow and highlights major prerequisite chains (Accounting, Analytics/Systems, Research/Thesis).</p>
 
-    <div class="card">
-      <pre class="mermaid">
-flowchart LR
+  <div class="row">
+    <!-- YEAR OF STUDY TABLE -->
+    <div class="card narrow">
+      <div style="font-weight:700; margin-bottom:10px;">Year of Study Progression Summary</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:80px;">Year</th>
+            <th>Dominant Learning Focus</th>
+            <th>Expected Learning Outcomes</th>
+            <th style="width:170px;">Primary Integration Mechanism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Year 1</b></td>
+            <td>Foundational business competencies</td>
+            <td>Students demonstrate understanding and initial application of essential business concepts across functional areas (management, accounting, economics, communication). Students begin to use basic ICT tools and articulate ideas in structured academic contexts.</td>
+            <td>Foundational business and general education courses</td>
+          </tr>
+          <tr>
+            <td><b>Year 2</b></td>
+            <td>Application and analytical development</td>
+            <td>Students apply business concepts and decision tools to structured organizational problems, analyze issues using basic analytical frameworks, and observe ethical and legal considerations. Collaborative work introduces team-based problem solving.</td>
+            <td>Core business courses and case-based learning</td>
+          </tr>
+          <tr>
+            <td><b>Year 3</b></td>
+            <td>Functional and cross-functional integration</td>
+            <td>Students integrate knowledge across functional areas, execute fundamental management functions, and communicate analyses/recommendations to stakeholders. Activities require increasing independence and practical application.</td>
+            <td>Practicum-related courses and integrative business subjects</td>
+          </tr>
+          <tr>
+            <td><b>Year 4</b></td>
+            <td>Strategic integration and professional practice</td>
+            <td>Students demonstrate integrated management and leadership competencies through internship and undergraduate thesis. Students strategically plan and execute business activities, apply ethical judgment, and present evidence-based recommendations addressing organizational and societal concerns.</td>
+            <td>Internship and undergraduate thesis</td>
+          </tr>
+        </tbody>
+      </table>
 
-%% =========================
-%% YEAR-BY-YEAR PROGRESSION
-%% =========================
-Y1["Year 1: Foundational Competencies
-- Economics, Accounting, Marketing, Org & Mgt
-- Intro to Analytics
-Bloom: Understand → Apply"]
+      <div class="legend">
+        <div class="tag"><span class="sw" style="background:var(--foundation)"></span>FOUNDATION</div>
+        <div class="tag"><span class="sw" style="background:var(--nlcc)"></span>NLCC</div>
+        <div class="tag"><span class="sw" style="background:var(--ched)"></span>CHED CORE</div>
+        <div class="tag"><span class="sw" style="background:var(--buscore)"></span>BUSINESS CORE</div>
+        <div class="tag"><span class="sw" style="background:var(--major)"></span>MGT MAJOR</div>
+      </div>
 
-Y2["Year 2: Functional Integration
-- Finance, Operations & Tech
-- Prescriptive Analytics, Big Data, Systems (SAD)
-- CSR & Governance, Quality
-Bloom: Apply → Analyze"]
-
-Y3["Year 3: Applied & Strategic Development
-- Business Research
-- Feasibility Study
-- Strategic Information Systems
-- Systems Theory + Electives
-Bloom: Analyze → Evaluate"]
-
-Y4["Year 4: Synthesis & Mastery
-- Thesis 1 → Thesis 2
-- Strategic Management
-- Supply Chain, Project Management
-- Internship/Practicum
-Bloom: Evaluate → Create"]
-
-Y1 --> Y2 --> Y3 --> Y4
-
-%% =========================
-%% RESEARCH PATHWAY
-%% =========================
-subgraph R["Research Progression Pathway"]
-direction TB
-RB["Business Research"] --> T1["Thesis 1 (Proposal)"] --> T2["Thesis 2 (Execution & Defense)"]
-end
-
-%% =========================
-%% ANALYTICS & SYSTEMS PATHWAY
-%% =========================
-subgraph A["Analytics & Systems Progression"]
-direction TB
-AN1["Intro to Analytics"] --> AN2["Prescriptive Analytics (Optimization)"] --> AN3["Big Data Techniques & Tech"] --> AN4["Simulation Model"] --> AN5["Strategic Information Systems"]
-end
-
-%% LINK PATHWAYS TO YEAR NODES (light guidance)
-Y1 -.supports.-> AN1
-Y2 -.reinforces.-> AN2
-Y2 -.reinforces.-> AN3
-Y2 -.reinforces.-> AN4
-Y3 -.integrates.-> AN5
-
-Y3 -.introduces.-> RB
-Y4 -.culminates.-> T2
-      </pre>
+      <div class="small">Tip: If you want the colors to exactly match your Excel palette, tell me the HEX codes you used and I’ll swap them in.</div>
     </div>
 
-    <div class="hint">
-      Tip: Put this in a GitHub repo as <code>index.html</code>, then enable GitHub Pages (Settings → Pages → Deploy from branch).
+    <!-- MERMAID GRAPH -->
+    <div class="card wide scroll">
+<pre class="mermaid">
+flowchart TB
+
+%% ========= COLOR CLASSES (checklist categories) =========
+classDef foundation fill:#1e73be,color:#fff,stroke:#0b4a7a,stroke-width:1px;
+classDef nlcc fill:#6b21a8,color:#fff,stroke:#3b0764,stroke-width:1px;
+classDef ched fill:#dc2626,color:#fff,stroke:#7f1d1d,stroke-width:1px;
+classDef buscore fill:#16a34a,color:#fff,stroke:#166534,stroke-width:1px;
+classDef major fill:#f59e0b,color:#111,stroke:#b45309,stroke-width:1px;
+
+%% ========= YEAR 1 =========
+subgraph Y1["Year 1"]
+direction LR
+
+subgraph Y1T1["Term 1"]
+direction TB
+y1t1a["Applied Economics"]:::foundation
+y1t1b["Business Math & Finance"]:::foundation
+y1t1c["Organization & Management"]:::foundation
+y1t1d["Principles of Marketing"]:::foundation
+y1t1e["Fundamentals of Accountancy (ABM)"]:::foundation
+y1t1f["Lasallian Studies 1"]:::nlcc
+y1t1g["Lasallian Recollection 1"]:::nlcc
+y1t1h["NSTP Orientation"]:::ched
+end
+
+subgraph Y1T2["Term 2"]
+direction TB
+acc1["Accounting 1"]:::buscore
+law1["Obligations & Contracts"]:::buscore
+micro["Basic Microeconomics"]:::foundation
+lcc1["LCC 1"]:::nlcc
+lcc2["LCC 2"]:::nlcc
+lcc3["LCC 3"]:::nlcc
+sas1["SAS 1000"]:::nlcc
+nstp1["NSTP 1"]:::ched
+end
+
+subgraph Y1T3["Term 3"]
+direction TB
+acc2["Accounting 2"]:::buscore
+analytics["Introduction to Analytics (Desc & Pred)"]:::major
+mktfund["Marketing Fundamentals"]:::buscore
+hrm["HRM w/ Org Behavior"]:::buscore
+lcc4["LCC 4"]:::nlcc
+lcc5["LCC 5"]:::nlcc
+nstp2["NSTP 2"]:::ched
+end
+
+end
+
+%% ========= YEAR 2 =========
+subgraph Y2["Year 2"]
+direction LR
+
+subgraph Y2T1["Term 1"]
+direction TB
+acc3["Accounting 3"]:::buscore
+opt["Prescriptive Analytics (Optimization)"]:::major
+comm["Communication Skills for Leaders"]:::buscore
+sdyn["System Dynamics"]:::major
+lcc6["LCC 6"]:::nlcc
+lcc7["LCC 7"]:::nlcc
+pe1["PE 1 (Cardio Fitness)"]:::ched
+ls2["Lasallian Studies 2"]:::nlcc
+end
+
+subgraph Y2T2["Term 2"]
+direction TB
+fin["Finance Management"]:::buscore
+otm["Operations & Technology Management"]:::major
+iba["International Business Agreements"]:::buscore
+sad["System Analysis & Design"]:::major
+big["Big Data Techniques & Technology"]:::major
+csr["CSR & Governance"]:::buscore
+pe2["PE 2 (Functional Exercises)"]:::ched
+rec2["Lasallian Recollection 2"]:::nlcc
+sas2["SAS 2000"]:::nlcc
+end
+
+subgraph Y2T3["Term 3"]
+direction TB
+law2["Partnership & Corporations"]:::buscore
+tqm["Total Quality Management"]:::major
+inn["Innovation & Technology Management"]:::major
+sim["Simulation Model"]:::major
+ele1["Management Elective 1"]:::major
+lcc8["LCC 8"]:::nlcc
+pe3["PE 3"]:::ched
+end
+
+end
+
+%% ========= YEAR 3 =========
+subgraph Y3["Year 3"]
+direction LR
+
+subgraph Y3T1["Term 1"]
+direction TB
+fs["Feasibility Study"]:::major
+sis["Strategic Information Systems"]:::major
+res["Business Research"]:::major
+stheo["Systems Theory"]:::major
+lcc9["LCC 9"]:::nlcc
+lcc10["LCC 10"]:::nlcc
+end
+
+subgraph Y3T2["Term 2"]
+direction TB
+th1["Thesis 1"]:::major
+ojt["OJT Internship for MGT"]:::major
+ele2["Management Elective 2"]:::major
+ele3["Management Elective 3"]:::major
+lcc11["LCC 11"]:::nlcc
+lcc12["LCC 12"]:::nlcc
+pe4["PE 4"]:::ched
+sas3["SAS 3000"]:::nlcc
+end
+
+subgraph Y3T3["Term 3"]
+direction TB
+strat["Strategic Management"]:::major
+scm["Supply Chain Management"]:::major
+pm["Project Management"]:::major
+th2["Thesis 2"]:::major
+lcc13["LCC 13"]:::nlcc
+lcc14["LCC 14"]:::nlcc
+ls3["Lasallian Studies 3"]:::nlcc
+end
+
+end
+
+%% ========= YEAR 4 (Checklist shows Term 1 AY 2026–2027) =========
+subgraph Y4["Year 4"]
+direction LR
+subgraph Y4T1["Term 1"]
+direction TB
+ele4["Management Elective 4"]:::major
+practicum["Project-based Practicum for MGT"]:::major
+tax["Taxation"]:::buscore
+lcc15["LCC 15"]:::nlcc
+rec3["Lasallian Recollection 3"]:::nlcc
+end
+end
+
+%% ========= KEY PREREQUISITE CHAINS (keep minimal) =========
+acc1 --> acc2 --> acc3
+analytics --> opt --> big --> sim --> sis
+res --> th1 --> th2
+law1 --> law2
+otm --> pm
+tqm --> stheo
+
+</pre>
     </div>
   </div>
+</div>
 </body>
 </html>
